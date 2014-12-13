@@ -1,0 +1,2 @@
+#define perseverance_VERSION_MAJOR @perseverance_VERSION_MAJOR@
+#define perseverance_VERSION_MINOR @perseverance_VERSION_MINOR@
