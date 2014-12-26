@@ -1,22 +1,24 @@
 #include "config.h"
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include <tmx/MapLoader.h>
+
 using namespace std;
 
-int main(int argc, char* argv[]) {
+int main(int argc, char *argv[]) {
+    cout << "Version " << perseverance_VERSION_MAJOR << "." << perseverance_VERSION_MINOR << endl;
 
-  /* Code adapted from the SFML 2 "Window" example */
+    sf::Window App(sf::VideoMode(800, 600), "myproject");
 
-  cout << "Version " << perseverance_VERSION_MAJOR << "." << perseverance_VERSION_MINOR << endl;
+    tmx::MapLoader ml("path/to/maps");
+    ml.Load("map.tmx");
 
-  sf::Window App(sf::VideoMode(800, 600), "myproject");
-
-  while (App.isOpen()) {
-    sf::Event Event;
-    while (App.pollEvent(Event)) {
-      if (Event.type == sf::Event::Closed)
-    App.close();
+    while (App.isOpen()) {
+        sf::Event Event;
+        while (App.pollEvent(Event)) {
+            if (Event.type == sf::Event::Closed)
+                App.close();
+        }
+        App.display();
     }
-    App.display();
-  }
 }
