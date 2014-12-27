@@ -8,17 +8,26 @@ using namespace std;
 int main(int argc, char *argv[]) {
     cout << "Version " << perseverance_VERSION_MAJOR << "." << perseverance_VERSION_MINOR << endl;
 
-    sf::Window App(sf::VideoMode(800, 600), "myproject");
+    sf::RenderWindow window(sf::VideoMode(800, 600), "myproject");
 
     tmx::MapLoader ml("path/to/maps");
     ml.Load("map.tmx");
 
-    while (App.isOpen()) {
+    sf::Texture texture;
+    if (!texture.loadFromFile("resources/sprites/body/male/tanned.png")) {
+        return -1;
+    }
+
+    sf::Sprite sprite;
+    sprite.setTexture(texture);
+
+    while (window.isOpen()) {
         sf::Event Event;
-        while (App.pollEvent(Event)) {
+        while (window.pollEvent(Event)) {
             if (Event.type == sf::Event::Closed)
-                App.close();
+                window.close();
         }
-        App.display();
+        window.display();
+        window.draw(sprite);
     }
 }
