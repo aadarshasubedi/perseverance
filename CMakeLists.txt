@@ -52,7 +52,3 @@ if (GLEW_FOUND)
   include_directories(${GLEW_INCLUDE_PATH})
   target_link_libraries(perseverance ${GLEW_LIBRARY})
 endif()
-
-INSTALL(TARGETS perseverance
-  RUNTIME DESTINATION bin
-)
