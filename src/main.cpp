@@ -10,8 +10,9 @@ int main(int argc, char *argv[]) {
 
     sf::RenderWindow window(sf::VideoMode(800, 600), "myproject");
 
-    tmx::MapLoader ml("path/to/maps");
-    ml.Load("map.tmx");
+    tmx::MapLoader ml("resources/maps");
+    ml.AddSearchPath("resources/maps/atlas");
+    ml.Load("landing.tmx");
 
     sf::Texture texture;
     if (!texture.loadFromFile("resources/sprites/body/male/tanned.png")) {
@@ -28,6 +29,7 @@ int main(int argc, char *argv[]) {
                 window.close();
         }
         window.display();
-        window.draw(sprite);
+//        window.draw(sprite);
+        window.draw(ml);
     }
 }

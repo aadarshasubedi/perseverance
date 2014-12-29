@@ -19,9 +19,6 @@ set(perseverance_VERSION_MINOR 0)
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake/Modules/")
 
-#Resource Files
-file(COPY resources DESTINATION ${PROJECT_BINARY_DIR})
-
 #Source Files
 set(SOURCE_FILES src/main.cpp)
 
@@ -52,3 +49,12 @@ if (GLEW_FOUND)
   include_directories(${GLEW_INCLUDE_PATH})
   target_link_libraries(perseverance ${GLEW_LIBRARY})
 endif()
+
+#Ensure latest resources are always copied
+add_custom_target(resources_copy)
+get_target_property(perseverance_location perseverance LOCATION)
+get_filename_component(perseverance_dir ${perseverance_location} PATH)
+add_custom_command(TARGET resources_copy PRE_BUILD
+                   COMMAND ${CMAKE_COMMAND} -E
+                   copy_directory ${CMAKE_SOURCE_DIR}/resources ${perseverance_dir}/resources)
+add_dependencies(perseverance resources_copy)
