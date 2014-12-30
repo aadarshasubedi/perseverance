@@ -6,14 +6,19 @@
  <tileset firstgid="1025" name="baseOutAtlas" tilewidth="32" tileheight="32">
   <image source="atlas/baseOutAtlas.png" width="1024" height="1024"/>
  </tileset>
- <layer name="Base Layer 1" width="30" height="30">
+ <layer name="Tile Layer 1" width="30" height="30">
   <data encoding="base64" compression="zlib">
    eJxzZ2BgcB8AnE4kThrFFOHtROB2RgaGbiTcyUicPkoxyF4NINYcAHs9gNhzAOwdqHAetXfU3lF7R+0dtXdw2tsxAu2F4VF7R+0dtXdw2AsAsWNAoQ==
   </data>
  </layer>
  <layer name="Tile Layer 2" width="30" height="30">
   <data encoding="base64" compression="zlib">
-   eJxjYCAOTGNkYJgOxDMYidRAJbANaN92IN5BZ3uvAe27DsQ3Roh/vwHt+w7EP+hsrxgTA4M4EEsw0dfeUTAKRsEoGAW4gSCwTBZCwsJ0KqMNgfYYIWFjOtkbCLQnCGoXiA4erZNGwSgYBSMIAAAtnQ6M
+   eJztzzEOgCAQRNGBgl5N1JOrJ1FOIpxELZ3SEhOyFs5LfklmAcpMDpjZ4gofVLJyb2PReHfnXmL5J/89uHeyy3i398DARm+7KyLyRhOA9lEXvr5IRESkjhv/ZwxM
+  </data>
+ </layer>
+ <layer name="Tile Layer 3" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztzbEJACAQBMHDjtRKxP57MRULeAxmYONNAIAf9ZaMq9lqvuv57KIvAPUObugBrQ==
   </data>
  </layer>
 </map>
