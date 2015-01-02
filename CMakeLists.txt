@@ -20,6 +20,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake/Mo
 
 #Source Files
 set(SOURCE_FILES src/main.cpp
+                 src/Game.cpp
                  src/util/ext/Animation.cpp
                  src/util/ext/AnimatedSprite.cpp)
 

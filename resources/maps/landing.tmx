@@ -21,4 +21,7 @@
    eJztzbEJACAQBMHDjtRKxP57MRULeAxmYONNAIAf9ZaMq9lqvuv57KIvAPUObugBrQ==
   </data>
  </layer>
+ <objectgroup name="Object Layer 1" width="30" height="30">
+  <object x="540" y="282" width="169" height="118"/>
+ </objectgroup>
 </map>
