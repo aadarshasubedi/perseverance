@@ -4,7 +4,7 @@
 #include <map>
 #include <memory>
 #include <string>
-#include <assert.h>
+#include <cassert>
 #include <stdexcept>
 
 template <typename Resource, typename Identifier>

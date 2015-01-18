@@ -33,6 +33,7 @@ class Animation
 public:
     Animation();
 
+public:
     void addFrame(sf::IntRect rect);
     void setSpriteSheet(const sf::Texture& texture);
     const sf::Texture* getSpriteSheet() const;

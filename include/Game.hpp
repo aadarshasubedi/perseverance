@@ -3,10 +3,13 @@
 
 #include <SFML/Graphics.hpp>
 #include <tmx/MapLoader.h>
+
 #include "Resources.hpp"
 #include "ResourceHolder.hpp"
 #include "Animation.hpp"
 #include "AnimatedSprite.hpp"
+#include "World.hpp"
+#include "Player.hpp"
 
 class Game {
 public:
@@ -18,7 +21,6 @@ public:
 private:
     static const unsigned int FrameRate;
     static const sf::Time TimePerFrame;
-    static const float PlayerSpeed;
 
 private:
     void processEvents();
@@ -27,23 +29,8 @@ private:
 
 private:
     sf::RenderWindow renderWindow;
-    sf::View overworldView;
-    sf::Vector2i screenDimensions;
-    tmx::MapLoader overworldMapLoader;
-    ResourceHolder<sf::Texture, Textures::Id> textureCache;
-    Animation walkingAnimationUp;
-    Animation standingAnimationUp;
-    Animation walkingAnimationLeft;
-    Animation standingAnimationLeft;
-    Animation walkingAnimationDown;
-    Animation standingAnimationDown;
-    Animation walkingAnimationRight;
-    Animation standingAnimationRight;
-    Animation* currentAnimation;
-    Animation* lastStandingHeadingAnimation;
-    AnimatedSprite hero;
-    sf::Vector2f movement;
-    bool noKeyWasPressed;
+    World world;
+    Player player;
 };
 
 #endif //GAME_HPP

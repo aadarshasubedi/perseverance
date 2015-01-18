@@ -21,6 +21,13 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake/Mo
 #Source Files
 set(SOURCE_FILES src/main.cpp
                  src/Game.cpp
+                 src/Hero.cpp
+                 src/World.cpp
+                 src/Player.cpp
+                 src/util/Command.cpp
+                 src/util/CommandQueue.cpp
+                 src/util/SceneNode.cpp
+                 src/util/Entity.cpp
                  src/util/ext/Animation.cpp
                  src/util/ext/AnimatedSprite.cpp)
 
