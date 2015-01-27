@@ -4,10 +4,10 @@
 #include <SFML/Graphics.hpp>
 #include <tmx/MapLoader.h>
 
-#include "Resources.hpp"
-#include "ResourceHolder.hpp"
-#include "Animation.hpp"
-#include "AnimatedSprite.hpp"
+#include "util/Resources.hpp"
+#include "util/ResourceHolder.hpp"
+#include "util/ext/Animation.hpp"
+#include "util/ext/AnimatedSprite.hpp"
 #include "World.hpp"
 #include "Player.hpp"
 
@@ -15,12 +15,12 @@ class Game {
 public:
     Game(sf::Vector2i screenDimensions);
 
-public:
-    void run();
+//public:
+//    void run();
 
-private:
-    static const unsigned int FrameRate;
-    static const sf::Time TimePerFrame;
+//private:
+//    static const unsigned int FrameRate;
+//    static const sf::Time TimePerFrame;
 
 private:
     void processEvents();

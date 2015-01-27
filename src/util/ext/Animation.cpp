@@ -21,7 +21,7 @@
 //
 ////////////////////////////////////////////////////////////
 
-#include "Animation.hpp"
+#include "util/ext/Animation.hpp"
 
 Animation::Animation() : m_texture(NULL)
 {

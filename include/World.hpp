@@ -5,11 +5,11 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <tmx/MapLoader.h>
 
-#include "Resources.hpp"
-#include "ResourceHolder.hpp"
-#include "SceneNode.hpp"
 #include "Hero.hpp"
-#include "CommandQueue.hpp"
+#include "util/Resources.hpp"
+#include "util/ResourceHolder.hpp"
+#include "util/SceneNode.hpp"
+#include "util/CommandQueue.hpp"
 
 class World : sf::NonCopyable {
 

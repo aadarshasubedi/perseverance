@@ -1,5 +1,5 @@
 #include <Category.hpp>
-#include "Command.hpp"
+#include "util/Command.hpp"
 
 Command::Command() :
         action(),

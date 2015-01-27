@@ -1,10 +1,10 @@
 #ifndef HERO_HPP
 #define HERO_HPP
 
-#include "Entity.hpp"
-#include "Animation.hpp"
-#include "AnimatedSprite.hpp"
-#include "Resources.hpp"
+#include "util/Entity.hpp"
+#include "util/ext/Animation.hpp"
+#include "util/ext/AnimatedSprite.hpp"
+#include "util/Resources.hpp"
 
 #include <map>
 

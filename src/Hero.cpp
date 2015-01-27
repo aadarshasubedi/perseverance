@@ -1,5 +1,5 @@
 #include "Hero.hpp"
-#include "ResourceHolder.hpp"
+#include "util/ResourceHolder.hpp"
 
 #include <SFML/Graphics/RectangleShape.hpp>
 

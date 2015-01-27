@@ -1,7 +1,8 @@
 #include "Player.hpp"
 #include "Hero.hpp"
 
-#include <CommandQueue.hpp>
+#include <util/CommandQueue.hpp>
+#include <util/Command.hpp>
 
 struct HeroMover {
     HeroMover(float velocityX, float velocityY, Hero::Heading heading)
