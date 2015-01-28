@@ -67,6 +67,15 @@ void StateStack::pushState(StateId stateId) {
     pendingList.push_back(PendingChange(Action::Push, stateId));
 }
 
+void StateStack::popState() {
+    pendingList.push_back(PendingChange(Action::Pop));
+}
+
+void StateStack::clearStates() {
+    pendingList.push_back(PendingChange(Action::Clear));
+}
+
 bool StateStack::isEmpty() const {
     return stack.empty();
 }
+

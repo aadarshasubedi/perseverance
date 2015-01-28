@@ -1,6 +1,7 @@
 #include "state/State.hpp"
 
 #include <SFML/Graphics/RenderWindow.hpp>
+#include <state/StateStack.hpp>
 
 State::Context::Context(sf::RenderWindow &window, TextureHolder &textureHolder, FontHolder &fontHolder, Player &player)
         : window(&window),
@@ -18,6 +19,13 @@ State::~State() {
 
 }
 
+void State::requestStackPop() {
+    stack->popState();
+}
+
+void State::requestStackPush(StateId stateId) {
+    stack->pushState(stateId);
+}
 
 State::Context State::getContext() const{
     return context;

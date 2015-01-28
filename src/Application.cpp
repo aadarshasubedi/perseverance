@@ -1,5 +1,6 @@
 #include "Application.hpp"
 #include "state/TitleState.hpp"
+#include "state/GameState.hpp"
 
 const unsigned int Application::FrameRate = 60;
 const sf::Time Application::TimePerFrame = sf::seconds(1.f / (Application::FrameRate * 1.f));
@@ -44,6 +45,7 @@ void Application::run() {
 
 void Application::registerStates() {
     stateStack.registerState<TitleState>(StateId::Title);
+    stateStack.registerState<GameState>(StateId::Game);
 }
 
 void Application::processInput() {

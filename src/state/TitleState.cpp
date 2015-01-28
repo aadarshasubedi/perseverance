@@ -22,5 +22,9 @@ bool TitleState::update(sf::Time deltaTime) {
 }
 
 bool TitleState::handleEvent(const sf::Event &event) {
+    if (sf::Event::KeyPressed == event.type) {
+        requestStackPop();
+        requestStackPush(StateId::Game);
+    }
     return false;
 }
