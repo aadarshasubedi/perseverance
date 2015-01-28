@@ -13,11 +13,11 @@ struct Command {
     unsigned int categoryFilter;
 };
 
-template <typename GameObject, typename Function>
+template <typename SceneNodeSubclass, typename Function>
 std::function<void(SceneNode&, sf::Time)> sceneNodeAction(Function subClassFunction) {
     return [=] (SceneNode& node, sf::Time deltaTime) {
-        assert(nullptr != dynamic_cast<GameObject*>(&node));
-        subClassFunction(static_cast<GameObject&>(node), deltaTime);
+        assert(nullptr != dynamic_cast<SceneNodeSubclass*>(&node));
+        subClassFunction(static_cast<SceneNodeSubclass&>(node), deltaTime);
     };
 }
 
