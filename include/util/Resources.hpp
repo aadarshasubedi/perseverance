@@ -9,7 +9,7 @@ enum class TextureId {
 };
 
 enum class FontId {
-
+    Main
 };
 
 //Forward Declarations

@@ -13,6 +13,9 @@ bool GameState::handleEvent(const sf::Event &event) {
 
     if (sf::Event::Resized == event.type) {
         world.resizeView(event.size.width, event.size.height);
+    } else if (sf::Event::KeyPressed == event.type
+            && sf::Keyboard::Escape == event.key.code) {
+        requestStackPush(StateId::Pause);
     }
 
     return true;
@@ -26,9 +29,5 @@ bool GameState::update(sf::Time deltaTime) {
 }
 
 void GameState::draw() {
-    sf::RenderWindow* window = getContext().window;
-
-    window->clear();
     world.draw();
-    window->display();
 }

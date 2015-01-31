@@ -20,8 +20,8 @@ State::UniqueStatePtr StateStack::createState(StateId stateId) {
 }
 
 void StateStack::handleEvent(const sf::Event &event) {
-    for (const State::UniqueStatePtr &state : stack) {
-        if (!state->handleEvent(event)) {
+    for (auto itr = stack.rbegin(); itr != stack.rend(); itr++) {
+        if (!(*itr)->handleEvent(event)) {
             break;
         }
     }
@@ -30,8 +30,8 @@ void StateStack::handleEvent(const sf::Event &event) {
 }
 
 void StateStack::update(sf::Time deltaTime) {
-    for (const State::UniqueStatePtr &state : stack) {
-        if (!state->update(deltaTime)) {
+    for (auto itr = stack.rbegin(); itr != stack.rend(); itr++) {
+        if (!(*itr)->update(deltaTime)) {
             break;
         }
     }
@@ -40,13 +40,16 @@ void StateStack::update(sf::Time deltaTime) {
 }
 
 void StateStack::draw() {
-    for (const State::UniqueStatePtr &state : stack) {
-        state->draw();
+    for (auto itr = stack.begin(); itr != stack.end(); itr++) {
+        (*itr)->draw();
     }
+//    for (const State::UniqueStatePtr &state : stack) {
+//        state->draw();
+//    }
 }
 
 void StateStack::applyPendingChanges() {
-    for (auto& pendingChange : pendingList) {
+    for (auto &pendingChange : pendingList) {
         switch (pendingChange.action) {
             case Action::Pop:
                 stack.pop_back();
@@ -79,3 +82,6 @@ bool StateStack::isEmpty() const {
     return stack.empty();
 }
 
+int StateStack::numberOfStates() const {
+    return stack.size();
+}

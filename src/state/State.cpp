@@ -27,6 +27,14 @@ void State::requestStackPush(StateId stateId) {
     stack->pushState(stateId);
 }
 
+void State::requestStateClear() {
+    stack->clearStates();
+}
+
 State::Context State::getContext() const{
     return context;
+}
+
+int State::numberOfStatesOnStack() const {
+    return stack->numberOfStates();
 }

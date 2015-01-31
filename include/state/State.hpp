@@ -47,6 +47,7 @@ protected:
     void requestStackPop();
     void requestStateClear();
     Context getContext() const;
+    int numberOfStatesOnStack() const;
 
 private:
     StateStack* stack;

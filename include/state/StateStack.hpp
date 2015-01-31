@@ -31,6 +31,7 @@ public:
     void popState();
     void clearStates();
     bool isEmpty() const;
+    int numberOfStates() const;
 
 private:
     State::UniqueStatePtr createState(StateId stateId);

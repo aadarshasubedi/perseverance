@@ -28,10 +28,13 @@ set(SOURCE_FILES src/main.cpp
                  src/state/GameState.cpp
                  src/state/StateStack.cpp
                  src/state/TitleState.cpp
+                 src/state/PauseState.cpp
+                 src/state/MainMenuState.cpp
                  src/util/Command.cpp
                  src/util/CommandQueue.cpp
                  src/util/SceneNode.cpp
                  src/util/Entity.cpp
+                 src/util/Utility.cpp
                  src/util/ext/Animation.cpp
                  src/util/ext/AnimatedSprite.cpp)
 

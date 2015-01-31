@@ -4,6 +4,8 @@
 enum class StateId {
     None,
     Title,
+    MainMenu,
+    Pause,
     Game
 };
 

@@ -1,9 +1,11 @@
 #include "Application.hpp"
+#include "state/MainMenuState.hpp"
 #include "state/TitleState.hpp"
 #include "state/GameState.hpp"
+#include "state/PauseState.hpp"
 
 const unsigned int Application::FrameRate = 60;
-const sf::Time Application::TimePerFrame = sf::seconds(1.f / (Application::FrameRate * 1.f));
+const sf::Time Application::TimePerFrame = sf::seconds(1.f / (Application::FrameRate));
 
 Application::Application(sf::Vector2i screenDimensions)
         : window(sf::VideoMode(screenDimensions.x, screenDimensions.y), "Perseverance"),
@@ -11,9 +13,10 @@ Application::Application(sf::Vector2i screenDimensions)
           fontHolder(),
           player(),
           stateStack(State::Context(window, textureHolder, fontHolder, player)){
-    window.setFramerateLimit(FrameRate);
-
+//    window.setFramerateLimit(0);
+//    window.setVerticalSyncEnabled(true);
     textureHolder.load(TextureId::TitleScreen, "resources/ui/title/lpc_home_cup.gif");
+    fontHolder.load(FontId::Main, "resources/fonts/kenpixel.ttf");
 
     registerStates();
 
@@ -45,7 +48,9 @@ void Application::run() {
 
 void Application::registerStates() {
     stateStack.registerState<TitleState>(StateId::Title);
+    stateStack.registerState<MainMenuState>(StateId::MainMenu);
     stateStack.registerState<GameState>(StateId::Game);
+    stateStack.registerState<PauseState>(StateId::Pause);
 }
 
 void Application::processInput() {
@@ -54,9 +59,6 @@ void Application::processInput() {
         stateStack.handleEvent(event);
 
         if (sf::Event::Closed == event.type) {
-            window.close();
-        } else if (sf::Event::KeyPressed == event.type
-                && sf::Keyboard::Escape == event.key.code) {
             window.close();
         }
     }
