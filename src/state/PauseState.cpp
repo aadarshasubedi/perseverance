@@ -2,17 +2,13 @@
 #include "util/Utility.hpp"
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Graphics/Sprite.hpp>
-#include <SFML/Graphics/Texture.hpp>
 #include <SFML/Graphics/RectangleShape.hpp>
-#include <SFML/System/Time.hpp>
 
 PauseState::PauseState(StateStack &stack, Context context)
         : State(stack, context),
           pauseText(),
           instructionText() {
     sf::Font &font = context.fontHolder->get(FontId::Main);
-
-    sf::RenderWindow *window = getContext().window;
     sf::Vector2f viewSize = context.window->getView().getSize();
 
     pauseText.setFont(font);

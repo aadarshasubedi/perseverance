@@ -3,6 +3,7 @@
 #include "state/TitleState.hpp"
 #include "state/GameState.hpp"
 #include "state/PauseState.hpp"
+#include "state/LoadingState.hpp"
 
 const unsigned int Application::FrameRate = 60;
 const sf::Time Application::TimePerFrame = sf::seconds(1.f / (Application::FrameRate));
@@ -51,6 +52,7 @@ void Application::registerStates() {
     stateStack.registerState<MainMenuState>(StateId::MainMenu);
     stateStack.registerState<GameState>(StateId::Game);
     stateStack.registerState<PauseState>(StateId::Pause);
+    stateStack.registerState<LoadingState>(StateId::Loading);
 }
 
 void Application::processInput() {

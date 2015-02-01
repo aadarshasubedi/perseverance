@@ -30,11 +30,13 @@ set(SOURCE_FILES src/main.cpp
                  src/state/TitleState.cpp
                  src/state/PauseState.cpp
                  src/state/MainMenuState.cpp
+                 src/state/LoadingState.cpp
                  src/util/Command.cpp
                  src/util/CommandQueue.cpp
                  src/util/SceneNode.cpp
                  src/util/Entity.cpp
                  src/util/Utility.cpp
+                 src/state/ResourceLoaderTask.cpp
                  src/util/ext/Animation.cpp
                  src/util/ext/AnimatedSprite.cpp)
 

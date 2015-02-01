@@ -6,6 +6,7 @@ enum class StateId {
     Title,
     MainMenu,
     Pause,
+    Loading,
     Game
 };
 

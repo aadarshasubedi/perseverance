@@ -6,6 +6,7 @@
 
 MainMenuState::MainMenuState(StateStack &stack, Context context)
         : State(stack, context),
+          options(),
           selectedIndex(0) {
     sf::Texture &texture = context.textureHolder->get(TextureId::TitleScreen);
     sf::Font &font = context.fontHolder->get(FontId::Main);
