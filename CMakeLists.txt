@@ -4,6 +4,7 @@ project (perseverance)
 #Environment variables
 set(ENV{SFML_ROOT} "/home/ryan/custom_root")
 set(ENV{TMX_LOADER_ROOT} "/home/ryan/custom_root")
+set(ENV{SFGUI_ROOT} "/home/ryan/custom_root")
 
 #Ensure C++ 11 support
 set(CMAKE_CXX_FLAGS "-std=c++11")
@@ -72,6 +73,13 @@ find_package(GLEW REQUIRED)
 if (GLEW_FOUND)
   include_directories(${GLEW_INCLUDE_PATH})
   target_link_libraries(perseverance ${GLEW_LIBRARY})
+endif()
+
+#SFGUI
+find_package( SFGUI REQUIRED )
+if (SFGUI_FOUND)
+ include_directories( ${SFGUI_INCLUDE_DIR} )
+ target_link_libraries( perseverance ${SFGUI_LIBRARY})
 endif()
 
 #Ensure latest resources are always copied

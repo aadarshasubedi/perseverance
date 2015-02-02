@@ -7,6 +7,7 @@
 
 #include <SFML/System/Time.hpp>
 #include <SFML/Graphics.hpp>
+#include <SFGUI/SFGUI.hpp>
 
 class Application {
 public:
@@ -29,6 +30,7 @@ private:
     TextureHolder textureHolder;
     FontHolder fontHolder;
     Player player;
+    sfg::SFGUI sfgui;
 };
 
 #endif //APPLICATION_HPP

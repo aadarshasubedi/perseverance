@@ -2,7 +2,6 @@
 
 #include <cassert>
 
-
 StateStack::PendingChange::PendingChange(Action pendingAction, StateId stateId)
         : action(pendingAction),
           stateId(stateId) {
@@ -43,9 +42,6 @@ void StateStack::draw() {
     for (auto itr = stack.begin(); itr != stack.end(); itr++) {
         (*itr)->draw();
     }
-//    for (const State::UniqueStatePtr &state : stack) {
-//        state->draw();
-//    }
 }
 
 void StateStack::applyPendingChanges() {

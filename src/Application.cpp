@@ -13,15 +13,17 @@ Application::Application(sf::Vector2i screenDimensions)
           textureHolder(),
           fontHolder(),
           player(),
-          stateStack(State::Context(window, textureHolder, fontHolder, player)){
-//    window.setFramerateLimit(0);
-//    window.setVerticalSyncEnabled(true);
+          sfgui(),
+          stateStack(State::Context(window, textureHolder, fontHolder, player)) {
     textureHolder.load(TextureId::TitleScreen, "resources/ui/title/lpc_home_cup.gif");
     fontHolder.load(FontId::Main, "resources/fonts/kenpixel.ttf");
 
     registerStates();
 
     stateStack.pushState(StateId::Title);
+
+    //This is to handle mixing SFGUI OpenGL calls with SFML drawing
+    window.resetGLStates();
 }
 
 void Application::run() {
@@ -73,5 +75,6 @@ void Application::update(sf::Time deltaTime) {
 void Application::render() {
     window.clear();
     stateStack.draw();
+    sfgui.Display(window);
     window.display();
 }

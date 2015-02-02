@@ -2,6 +2,7 @@
 #define MAINMENUSTATE_HPP
 
 #include <SFML/Graphics/Sprite.hpp>
+#include <SFGUI/SFGUI.hpp>
 #include "state/State.hpp"
 
 class MainMenuState : public State {
@@ -15,18 +16,12 @@ public:
     virtual bool handleEvent(const sf::Event& event) override;
 
 private:
-    enum Options {
-        Play,
-        Exit
-    };
+    void onPlayButtonClick();
+    void onExitButtonClick();
 
 private:
-    void updateTextColor();
-
-private:
-    std::vector<sf::Text> options;
     sf::Sprite background;
-    std::vector<sf::Text>::size_type selectedIndex;
+    sfg::Desktop desktop;
 };
 
 #endif //MAINMENUSTATE_HPP

@@ -3,7 +3,10 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <state/StateStack.hpp>
 
-State::Context::Context(sf::RenderWindow &window, TextureHolder &textureHolder, FontHolder &fontHolder, Player &player)
+State::Context::Context(sf::RenderWindow &window,
+        TextureHolder &textureHolder,
+        FontHolder &fontHolder,
+        Player &player)
         : window(&window),
           textureHolder(&textureHolder),
           fontHolder(&fontHolder),
@@ -12,11 +15,9 @@ State::Context::Context(sf::RenderWindow &window, TextureHolder &textureHolder, 
 
 State::State(StateStack &stack, State::Context context)
         : stack(&stack), context(context) {
-
 }
 
 State::~State() {
-
 }
 
 void State::requestStackPop() {
@@ -31,7 +32,7 @@ void State::requestStateClear() {
     stack->clearStates();
 }
 
-State::Context State::getContext() const{
+State::Context State::getContext() const {
     return context;
 }
 
