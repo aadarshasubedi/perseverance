@@ -6,6 +6,7 @@ CreatureCatalog::CreatureCatalog()
 }
 
 void CreatureCatalog::addCreature(CreatureData& creatureData) {
+    assert(static_cast<unsigned int>(creatureData.type) < creatures.size());
     creatures[static_cast<unsigned int>(creatureData.type)] = creatureData;
 }
 

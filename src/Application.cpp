@@ -18,6 +18,7 @@ Application::Application(sf::Vector2i screenDimensions)
           statistics(),
           statisticsUpdateTime(),
           statisticsFrameCount(0) {
+    window.setFramerateLimit(Application::FrameRate);
     textureHolder.load(TextureId::TitleScreen, "resources/ui/title/lpc_home_cup.gif");
     fontHolder.load(FontId::Main, "resources/fonts/kenpixel.ttf");
 
