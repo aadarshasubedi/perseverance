@@ -14,9 +14,16 @@ Application::Application(sf::Vector2i screenDimensions)
           fontHolder(),
           player(),
           sfgui(),
-          stateStack(State::Context(window, textureHolder, fontHolder, player)) {
+          stateStack(State::Context(window, textureHolder, fontHolder, player)),
+          statistics(),
+          statisticsUpdateTime(),
+          statisticsFrameCount(0) {
     textureHolder.load(TextureId::TitleScreen, "resources/ui/title/lpc_home_cup.gif");
     fontHolder.load(FontId::Main, "resources/fonts/kenpixel.ttf");
+
+    statistics.setFont(fontHolder.get(FontId::Main));
+    statistics.setPosition(.9f, .1f);
+    statistics.setCharacterSize(12u);
 
     registerStates();
 
@@ -44,7 +51,7 @@ void Application::run() {
                 window.close();
             }
         }
-
+        updateStatistics(elapsedTime);
         render();
     }
 }
@@ -76,5 +83,21 @@ void Application::render() {
     window.clear();
     stateStack.draw();
     sfgui.Display(window);
+    window.setView(window.getDefaultView());
+    window.draw(statistics);
     window.display();
+}
+
+void Application::updateStatistics(sf::Time deltaTime) {
+    statisticsUpdateTime += deltaTime;
+    statisticsFrameCount +=1;
+
+    if (statisticsUpdateTime >= sf::seconds(1.f)) {
+        std::stringstream stream;
+        stream << statisticsFrameCount;
+        statistics.setString("FPS: " + stream.str());
+
+        statisticsUpdateTime -= sf::seconds(1.f);
+        statisticsFrameCount = 0;
+    }
 }

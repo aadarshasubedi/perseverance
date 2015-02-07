@@ -5,7 +5,7 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <tmx/MapLoader.h>
 
-#include "Hero.hpp"
+#include "Creature.hpp"
 #include "util/Resources.hpp"
 #include "util/ResourceHolder.hpp"
 #include "util/SceneNode.hpp"
@@ -44,7 +44,7 @@ private:
     SceneNode sceneGraph;
     std::array<SceneNode*, Layer::LayerCount> layers;
     sf::FloatRect bounds;
-    Hero* hero;
+    Creature* hero;
     CommandQueue commandQueue;
     tmx::MapLoader overworldMapLoader;
 };

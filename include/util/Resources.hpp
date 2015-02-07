@@ -4,7 +4,8 @@
 #include "ResourceHolder.hpp"
 
 enum class TextureId {
-    Hero,
+    Human,
+    Orc,
     TitleScreen
 };
 

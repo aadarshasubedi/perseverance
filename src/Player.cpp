@@ -1,22 +1,21 @@
 #include "Player.hpp"
-#include "Hero.hpp"
+#include "Creature.hpp"
 
 #include <util/CommandQueue.hpp>
-#include <util/Command.hpp>
 
 struct HeroMover {
-    HeroMover(float velocityX, float velocityY, Hero::Heading heading)
+    HeroMover(float velocityX, float velocityY, Heading heading)
             : velocity(velocityX, velocityY),
               heading(heading) {
     }
 
-    void operator()(Hero &hero, sf::Time deltaTime) const {
+    void operator()(Creature &hero, sf::Time deltaTime) const {
         hero.setVelocity(velocity);
         hero.setHeading(heading);
     }
 
     sf::Vector2f velocity;
-    Hero::Heading heading;
+    Heading heading;
 };
 
 Player::Player() {
@@ -54,10 +53,10 @@ void Player::handleRealtimeInput(CommandQueue &commands) {
 void Player::initializePlayerActions() {
     const static float playerSpeed = 90.f;
 
-    actionBinding[Action::MoveNorth].action = sceneNodeAction<Hero>(HeroMover(0.f, -playerSpeed, Hero::Heading::North));
-    actionBinding[Action::MoveWest].action = sceneNodeAction<Hero>(HeroMover(-playerSpeed, 0.f, Hero::Heading::West));
-    actionBinding[Action::MoveSouth].action = sceneNodeAction<Hero>(HeroMover(0.f, playerSpeed, Hero::Heading::South));
-    actionBinding[Action::MoveEast].action = sceneNodeAction<Hero>(HeroMover(playerSpeed, 0.f, Hero::Heading::East));
+    actionBinding[Action::MoveNorth].action = sceneNodeAction<Creature>(HeroMover(0.f, -playerSpeed, Heading::North));
+    actionBinding[Action::MoveWest].action = sceneNodeAction<Creature>(HeroMover(-playerSpeed, 0.f, Heading::West));
+    actionBinding[Action::MoveSouth].action = sceneNodeAction<Creature>(HeroMover(0.f, playerSpeed, Heading::South));
+    actionBinding[Action::MoveEast].action = sceneNodeAction<Creature>(HeroMover(playerSpeed, 0.f, Heading::East));
 }
 
 void Player::assignKey(sf::Keyboard::Key key, Action action) {

@@ -40,7 +40,8 @@ void World::draw() {
 }
 
 void World::loadTextures() {
-    textureHolder.load(TextureId::Hero, "resources/sprites/complete/male_default.png");
+    textureHolder.load(TextureId::Human, "resources/sprites/complete/male_default.png");
+    textureHolder.load(TextureId::Orc, "resources/sprites/complete/orc_default.png");
 }
 
 void World::buildScene() {
@@ -51,7 +52,7 @@ void World::buildScene() {
         sceneGraph.attachChild(std::move(layer));
     }
 
-    std::unique_ptr<Hero> heroNode(new Hero(textureHolder));
+    std::unique_ptr<Creature> heroNode(new Creature(CreatureType::Human, textureHolder));
     hero = heroNode.get();
     layers[Layer::Foreground]->attachChild(std::move(heroNode));
 

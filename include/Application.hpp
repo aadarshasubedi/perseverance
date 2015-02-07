@@ -25,12 +25,20 @@ private:
     static const sf::Time TimePerFrame;
 
 private:
+    void updateStatistics(sf::Time deltaTime);
+
+private:
     StateStack stateStack;
     sf::RenderWindow window;
     TextureHolder textureHolder;
     FontHolder fontHolder;
     Player player;
     sfg::SFGUI sfgui;
+
+private:
+    sf::Text statistics;
+    sf::Time statisticsUpdateTime;
+    int statisticsFrameCount;
 };
 
 #endif //APPLICATION_HPP
