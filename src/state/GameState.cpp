@@ -4,7 +4,7 @@
 
 GameState::GameState(StateStack &stack, Context context)
         : State(stack, context),
-          world(*(context.window), *(context.textureHolder), *(context.fontHolder)) {
+          world(*(context.window)) {
 }
 
 bool GameState::handleEvent(const sf::Event &event) {

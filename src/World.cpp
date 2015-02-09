@@ -1,9 +1,9 @@
 #include "World.hpp"
 
-World::World(sf::RenderWindow &windowParam, TextureHolder& textureHolder, FontHolder& fontHolder)
+World::World(sf::RenderWindow &windowParam)
         : window(windowParam),
-          textures(textureHolder),
-          fonts(fontHolder),
+          textures(),
+          fonts(),
           view(windowParam.getDefaultView()),
           sceneGraph(),
           layers(),
@@ -11,7 +11,7 @@ World::World(sf::RenderWindow &windowParam, TextureHolder& textureHolder, FontHo
           bounds(0.f, 0.f, view.getSize().x, view.getSize().y),
           hero(nullptr) {
     view.setViewport(sf::FloatRect(0, 0, 1, 1));
-    loadTextures();
+    loadResources();
     buildScene();
 
     overworldMapLoader.AddSearchPath("resources/maps/atlas");
@@ -38,9 +38,11 @@ void World::draw() {
     window.draw(sceneGraph);
 }
 
-void World::loadTextures() {
+void World::loadResources() {
     textures.load(TextureId::Human, "resources/sprites/complete/male_default.png");
     textures.load(TextureId::Orc, "resources/sprites/complete/orc_default.png");
+
+    fonts.load(FontId::Main, "resources/fonts/kenpixel.ttf");
 }
 
 void World::buildScene() {
