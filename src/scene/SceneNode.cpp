@@ -1,5 +1,5 @@
-#include "util/SceneNode.hpp"
-#include "util/Command.hpp"
+#include "scene/SceneNode.hpp"
+#include "scene/Command.hpp"
 
 #include <cassert>
 

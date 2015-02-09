@@ -1,18 +1,19 @@
 #ifndef CREATURE_HPP
 #define CREATURE_HPP
 
-#include "util/Entity.hpp"
+#include "scene/Entity.hpp"
 #include "util/ext/Animation.hpp"
 #include "util/ext/AnimatedSprite.hpp"
 #include "util/Resources.hpp"
-#include "CreatureCatalog.hpp"
+#include "scene/CreatureCatalog.hpp"
+#include "scene/TextNode.hpp"
 
 #include <map>
 
 class Creature : public Entity {
 
 public:
-    Creature(CreatureType type, const TextureHolder& textureHolder);
+    Creature(CreatureType type, const TextureHolder& textures, const FontHolder& fonts);
 
 public:
     void setHeading(Heading heading);
@@ -25,7 +26,10 @@ private:
     virtual void updateCurrent(sf::Time dt) override;
 
 private:
-    typedef std::unique_ptr<Animation> AnimationPtr;
+    void updateHealthText();
+
+private:
+    using AnimationPtr = std::unique_ptr<Animation>;
 
 private:
     AnimatedSprite sprite;
@@ -33,6 +37,7 @@ private:
     std::map<Heading, AnimationPtr> walkingAnimations;
     std::map<Heading, AnimationPtr> standingAnimations;
     CreatureType type;
+    TextNode* healthDisplay;
 };
 
-#endif //CREATURE_HPP
+#endif //CREATURE_HPPde

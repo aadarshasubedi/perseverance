@@ -1,4 +1,4 @@
-#include "CreatureCatalog.hpp"
+#include "scene/CreatureCatalog.hpp"
 
 CreatureCatalog::CreatureCatalog()
 : creatures(2) {

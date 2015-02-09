@@ -1,11 +1,10 @@
 #include "World.hpp"
 
-#include <algorithm>
-
-World::World(sf::RenderWindow &windowParam)
+World::World(sf::RenderWindow &windowParam, TextureHolder& textureHolder, FontHolder& fontHolder)
         : window(windowParam),
+          textures(textureHolder),
+          fonts(fontHolder),
           view(windowParam.getDefaultView()),
-          textureHolder(),
           sceneGraph(),
           layers(),
           overworldMapLoader("resources/maps"),
@@ -40,8 +39,8 @@ void World::draw() {
 }
 
 void World::loadTextures() {
-    textureHolder.load(TextureId::Human, "resources/sprites/complete/male_default.png");
-    textureHolder.load(TextureId::Orc, "resources/sprites/complete/orc_default.png");
+    textures.load(TextureId::Human, "resources/sprites/complete/male_default.png");
+    textures.load(TextureId::Orc, "resources/sprites/complete/orc_default.png");
 }
 
 void World::buildScene() {
@@ -52,7 +51,7 @@ void World::buildScene() {
         sceneGraph.attachChild(std::move(layer));
     }
 
-    std::unique_ptr<Creature> heroNode(new Creature(CreatureType::Human, textureHolder));
+    std::unique_ptr<Creature> heroNode(new Creature(CreatureType::Human, textures, fonts));
     hero = heroNode.get();
     layers[Layer::Foreground]->attachChild(std::move(heroNode));
 

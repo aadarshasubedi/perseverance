@@ -1,4 +1,4 @@
-#include "util/Entity.hpp"
+#include "scene/Entity.hpp"
 #include <cassert>
 
 Entity::Entity()

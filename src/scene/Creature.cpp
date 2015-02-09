@@ -1,11 +1,12 @@
-#include "Creature.hpp"
+#include "scene/Creature.hpp"
 
 #include <cassert>
 #include <SFML/Graphics/RectangleShape.hpp>
+#include <sstream>
 
 CreatureCatalogUptr creatureCatalog = initializeCreatureData();
 
-Creature::Creature(CreatureType type, const TextureHolder &textureHolder)
+Creature::Creature(CreatureType type, const TextureHolder& textures, const FontHolder& fonts)
         : Entity{},
           type(type),
           heading(Heading::South) {
@@ -28,17 +29,17 @@ Creature::Creature(CreatureType type, const TextureHolder &textureHolder)
 
     setHitPoints(creatureData->hitPoints);
 
-    walkingAnimationNorth->setSpriteSheet(textureHolder.get(creatureData->textureId));
-    standingAnimationNorth->setSpriteSheet(textureHolder.get(creatureData->textureId));
+    walkingAnimationNorth->setSpriteSheet(textures.get(creatureData->textureId));
+    standingAnimationNorth->setSpriteSheet(textures.get(creatureData->textureId));
 
-    walkingAnimationWest->setSpriteSheet(textureHolder.get(creatureData->textureId));
-    standingAnimationWest->setSpriteSheet(textureHolder.get(creatureData->textureId));
+    walkingAnimationWest->setSpriteSheet(textures.get(creatureData->textureId));
+    standingAnimationWest->setSpriteSheet(textures.get(creatureData->textureId));
 
-    walkingAnimationSouth->setSpriteSheet(textureHolder.get(creatureData->textureId));
-    standingAnimationSouth->setSpriteSheet(textureHolder.get(creatureData->textureId));
+    walkingAnimationSouth->setSpriteSheet(textures.get(creatureData->textureId));
+    standingAnimationSouth->setSpriteSheet(textures.get(creatureData->textureId));
 
-    walkingAnimationEast->setSpriteSheet(textureHolder.get(creatureData->textureId));
-    standingAnimationEast->setSpriteSheet(textureHolder.get(creatureData->textureId));
+    walkingAnimationEast->setSpriteSheet(textures.get(creatureData->textureId));
+    standingAnimationEast->setSpriteSheet(textures.get(creatureData->textureId));
 
     for (auto &frame : creatureData->walkingFrames) {
         switch (frame.heading) {
@@ -95,6 +96,12 @@ Creature::Creature(CreatureType type, const TextureHolder &textureHolder)
 
     sf::FloatRect bounds = sprite.getLocalBounds();
     sprite.setOrigin(bounds.width / 2.f, bounds.height / 2.f);
+
+    std::unique_ptr<TextNode> healthDisplayText(new TextNode(fonts, "HP"));
+    healthDisplay = healthDisplayText.get();
+    attachChild(std::move(healthDisplayText));
+
+    updateHealthText();
 }
 
 void Creature::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const {
@@ -125,6 +132,8 @@ void Creature::updateCurrent(sf::Time dt) {
     }
 
     sprite.update(dt);
+
+    updateHealthText();
 }
 
 Category::Type Creature::getCategory() const {
@@ -133,4 +142,12 @@ Category::Type Creature::getCategory() const {
 
 void Creature::setHeading(Heading heading) {
     this->heading = heading;
+}
+
+void Creature::updateHealthText() {
+    std::stringstream stream;
+    stream << getHitPoints();
+    healthDisplay->setString(stream.str() + " HP");
+    healthDisplay->setPosition(0.f, 50.f);
+    healthDisplay->setRotation(-getRotation());
 }

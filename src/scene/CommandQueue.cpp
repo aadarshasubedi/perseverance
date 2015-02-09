@@ -1,4 +1,4 @@
-#include "util/CommandQueue.hpp"
+#include "scene/CommandQueue.hpp"
 
 void CommandQueue::push(const Command &command) {
     queue.push(command);

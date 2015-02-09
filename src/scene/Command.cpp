@@ -1,5 +1,5 @@
-#include <Category.hpp>
-#include "util/Command.hpp"
+#include "scene/Category.hpp"
+#include "scene/Command.hpp"
 
 Command::Command() :
         action(),

@@ -1,7 +1,7 @@
 #ifndef PLAYER_HPP
 #define PLAYER_HPP
 
-#include "util/Command.hpp"
+#include "scene/Command.hpp"
 
 #include <SFML/Window/Event.hpp>
 #include <map>

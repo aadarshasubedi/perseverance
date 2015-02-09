@@ -22,8 +22,6 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake/Mo
 #Source Files
 set(SOURCE_FILES src/main.cpp
                  src/Application.cpp
-                 src/Creature.cpp
-                 src/CreatureCatalog.cpp
                  src/World.cpp
                  src/Player.cpp
                  src/state/State.cpp
@@ -33,10 +31,13 @@ set(SOURCE_FILES src/main.cpp
                  src/state/PauseState.cpp
                  src/state/MainMenuState.cpp
                  src/state/LoadingState.cpp
-                 src/util/Command.cpp
-                 src/util/CommandQueue.cpp
-                 src/util/SceneNode.cpp
-                 src/util/Entity.cpp
+                 src/scene/Creature.cpp
+                 src/scene/CreatureCatalog.cpp
+                 src/scene/Command.cpp
+                 src/scene/CommandQueue.cpp
+                 src/scene/SceneNode.cpp
+                 src/scene/Entity.cpp
+                 src/scene/TextNode.cpp
                  src/util/Utility.cpp
                  src/state/ResourceLoaderTask.cpp
                  src/util/ext/Animation.cpp

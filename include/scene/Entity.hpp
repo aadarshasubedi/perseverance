@@ -2,7 +2,7 @@
 #define ENTITY_HPP
 
 #include <SFML/System/Vector2.hpp>
-#include "SceneNode.hpp"
+#include "scene/SceneNode.hpp"
 
 class Entity : public SceneNode {
 public:

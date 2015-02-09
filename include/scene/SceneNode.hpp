@@ -9,7 +9,7 @@
 #include <SFML/Graphics/RenderTarget.hpp>
 #include <SFML/System/NonCopyable.hpp>
 #include <SFML/System/Time.hpp>
-#include "Category.hpp"
+#include "scene/Category.hpp"
 
 class Command;
 

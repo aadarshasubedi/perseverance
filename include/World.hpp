@@ -5,16 +5,16 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <tmx/MapLoader.h>
 
-#include "Creature.hpp"
+#include "scene/Creature.hpp"
 #include "util/Resources.hpp"
 #include "util/ResourceHolder.hpp"
-#include "util/SceneNode.hpp"
-#include "util/CommandQueue.hpp"
+#include "scene/SceneNode.hpp"
+#include "scene/CommandQueue.hpp"
 
 class World : sf::NonCopyable {
 
 public:
-    World(sf::RenderWindow& window);
+    explicit World(sf::RenderWindow& window, TextureHolder& textureHolder, FontHolder& fontHolder);
 
 public:
     void update(sf::Time deltaTime);
@@ -39,8 +39,9 @@ private:
 
 private:
     sf::RenderWindow& window;
+    TextureHolder& textures;
+    FontHolder& fonts;
     sf::View view;
-    TextureHolder textureHolder;
     SceneNode sceneGraph;
     std::array<SceneNode*, Layer::LayerCount> layers;
     sf::FloatRect bounds;
