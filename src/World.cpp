@@ -25,6 +25,11 @@ void World::update(sf::Time deltaTime) {
         sceneGraph.onCommand(commandQueue.pop(), deltaTime);
     }
 
+    sf::Vector2f velocity = hero->getVelocity();
+    if (velocity.x > 0 && velocity.y > 0) {
+        hero->setVelocity(velocity/std::sqrt(2.f));
+    }
+
     sceneGraph.update(deltaTime);
 
     boundHero();

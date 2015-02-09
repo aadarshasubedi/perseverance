@@ -9,6 +9,8 @@ public:
     explicit Entity();
 
 public:
+    void accelerate(sf::Vector2f velocity);
+    void accelerate(float velocityX, float velocityY);
     void setVelocity(sf::Vector2f velocity);
     void setVelocity(float velocityX, float velocityY);
     sf::Vector2f getVelocity() const;

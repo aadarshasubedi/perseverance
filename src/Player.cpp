@@ -9,9 +9,9 @@ struct PlayerMover {
               heading(heading) {
     }
 
-    void operator()(Creature& player, sf::Time deltaTime) const {
-        player.setVelocity(velocity);
-        player.setHeading(heading);
+    void operator()(Creature& creature, sf::Time deltaTime) const {
+        creature.accelerate(velocity * creature.getSpeed());
+        creature.setHeading(heading);
     }
 
     sf::Vector2f velocity;
@@ -51,12 +51,10 @@ void Player::handleRealtimeInput(CommandQueue &commands) {
 }
 
 void Player::initializePlayerActions() {
-    const static float playerSpeed = 90.f;
-
-    actionBinding[Action::MoveNorth].action = sceneNodeAction<Creature>(PlayerMover(0.f, -playerSpeed, Heading::North));
-    actionBinding[Action::MoveWest].action = sceneNodeAction<Creature>(PlayerMover(-playerSpeed, 0.f, Heading::West));
-    actionBinding[Action::MoveSouth].action = sceneNodeAction<Creature>(PlayerMover(0.f, playerSpeed, Heading::South));
-    actionBinding[Action::MoveEast].action = sceneNodeAction<Creature>(PlayerMover(playerSpeed, 0.f, Heading::East));
+    actionBinding[Action::MoveNorth].action = sceneNodeAction<Creature>(PlayerMover(0.f, -1.f, Heading::North));
+    actionBinding[Action::MoveWest].action = sceneNodeAction<Creature>(PlayerMover(-1.f, 0.f, Heading::West));
+    actionBinding[Action::MoveSouth].action = sceneNodeAction<Creature>(PlayerMover(0.f, 1.f, Heading::South));
+    actionBinding[Action::MoveEast].action = sceneNodeAction<Creature>(PlayerMover(1.f, 0.f, Heading::East));
 }
 
 void Player::assignKey(sf::Keyboard::Key key, Action action) {

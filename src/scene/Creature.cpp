@@ -15,6 +15,9 @@ Creature::Creature(CreatureType type, const TextureHolder& textures, const FontH
 
     assert(nullptr != creatureData);
 
+    setHitPoints(creatureData->hitPoints);
+    speed = creatureData->speed;
+
     AnimationPtr walkingAnimationNorth(new Animation());
     AnimationPtr standingAnimationNorth(new Animation());
 
@@ -26,8 +29,6 @@ Creature::Creature(CreatureType type, const TextureHolder& textures, const FontH
 
     AnimationPtr walkingAnimationEast(new Animation());
     AnimationPtr standingAnimationEast(new Animation());
-
-    setHitPoints(creatureData->hitPoints);
 
     walkingAnimationNorth->setSpriteSheet(textures.get(creatureData->textureId));
     standingAnimationNorth->setSpriteSheet(textures.get(creatureData->textureId));
@@ -150,4 +151,8 @@ void Creature::updateHealthText() {
     healthDisplay->setString(stream.str() + " HP");
     healthDisplay->setPosition(0.f, 50.f);
     healthDisplay->setRotation(-getRotation());
+}
+
+float Creature::getSpeed() const {
+    return speed;
 }

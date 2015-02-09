@@ -5,6 +5,15 @@ Entity::Entity()
         : SceneNode{} {
 }
 
+void Entity::accelerate(sf::Vector2f velocity) {
+    this->velocity += velocity;
+}
+
+void Entity::accelerate(float velocityX, float velocityY) {
+    this->velocity.x += velocityX;
+    this->velocity.y += velocityY;
+}
+
 void Entity::setVelocity(sf::Vector2f velocity) {
     this->velocity = velocity;
 }

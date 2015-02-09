@@ -17,6 +17,7 @@ public:
 
 public:
     void setHeading(Heading heading);
+    float getSpeed() const;
 
 public:
     virtual Category::Type getCategory() const override;
@@ -38,6 +39,7 @@ private:
     std::map<Heading, AnimationPtr> standingAnimations;
     CreatureType type;
     TextNode* healthDisplay;
+    float speed;
 };
 
 #endif //CREATURE_HPPde
